@@ -11,7 +11,7 @@ use_math: true
 
 **기상 시간** : 오전 7시 55분
 
-**공부 시간** : 
+**공부 시간** :  
 
 
 
@@ -97,7 +97,9 @@ use_math: true
 
 
 
-### HopCroft-Karf Algorithm
+### HopCroft-Karp Algorithm
+
+[kks227님의 블로그](https://m.blog.naver.com/kks227/220816033373)를 토대로 작성하였습니다.
 
 간선 용량이 모두 1인 이분 그래프에서만 동작하는 최대 유량 알고리즘
 
@@ -113,6 +115,103 @@ $$
 $$
 O(V^{2.5})
 $$
- 이다.
+알고리즘에 대한 자세한 설명은 위의 블로그에서 확인할 수 있다.
 
-알고리즘을 이해하기 위해서는 2가지 개념을 이해해야 한다.
+이 포스팅에서는 HopCroft-Karf에 대한 기본 코드와 관련된 문제를 다룬다.
+
+#### HopCroft-Karp Basic Code (Class)
+
+```cpp
+class HopCroft {
+private:
+	int N;
+	vector<bool> used;
+	vector<int> A, B, level;
+	vector< vector<int> > edges;
+public:
+	void init(int N) {
+		this->N = N;
+		used.assign(N, false);
+		A.assign(N , -1);
+		B.assign(N , -1);
+		level.assign(N, -1);
+		edges.assign(N, vector<int>());
+	}
+
+	void addEdge(int a, int b) {
+		edges[a].push_back(b);
+	}
+
+	void makeLevelGraph() {
+		queue<int> q;
+		for (int i = 0; i < N; i++) {
+			if (!used[i]) {
+				level[i] = 0;
+				q.push(i);
+			}
+			else {
+				level[i] = -1;
+			}
+		}
+		while (!q.empty()) {
+			int here = q.front();
+			q.pop();
+			for (int there : edges[here]) {
+				int matchedA = B[there];
+				if (matchedA != -1 && level[matchedA] == -1) {
+					level[matchedA] = level[here] + 1;
+					q.push(matchedA);
+				}
+			}
+		}
+	}
+	bool dfs(int here) {
+		for (int there : edges[here]) {
+			int matchedA = B[there];
+			if (matchedA == -1 || level[matchedA] == level[here] + 1 && dfs(matchedA)) {
+				used[here] = true;
+				A[here] = there;
+				B[there] = here;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	int execute() {
+		int match = 0;
+		while (1) {
+			makeLevelGraph();
+			int flow = 0;
+			for (int i = 0; i < N; i++) {
+				if (!used[i] && dfs(i)) flow++;
+			}
+			if (flow == 0) break;
+
+			match += flow;
+		}
+		return match;
+	}
+};
+
+```
+
+#### Main Code
+
+```cpp
+int main() {
+/*	input();  문제에 따라 달라지는 부분 => 이분 그래프를 만들어주는 부분이다. */
+	int ans = hf.execute();
+	printf("%d\n", ans);
+	return 0;
+}
+```
+
+
+
+#### * 관련 문제
+
+[BOJ 3736 System Engineer](icpc.me/3736) 
+
+[BOJ 13166 범죄 파티](icpc.me/13166)
+
