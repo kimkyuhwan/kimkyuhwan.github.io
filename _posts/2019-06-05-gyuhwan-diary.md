@@ -3,7 +3,7 @@ layout: post
 title:  "0605 Diary"
 date:   2019-06-05 00:00:00 0000
 author : "Gyuhwan Kim"
-categories: diary algorithm 
+categories: diary algorithm GoF
 use_math: true
 ---
 
@@ -101,13 +101,11 @@ use_math: true
 
 간선 용량이 모두 1인 이분 그래프에서만 동작하는 최대 유량 알고리즘
 
-시간복잡도는 
+이 알고리즘의 시간복잡도는 
 $$
 O(E \sqrt V)
 $$
- 입니다.
-
-완전 이분 그래프에서 
+ 이다. 이 때,  완전 이분 그래프에서 
 $$
 E = O(V^2)
 $$
@@ -117,5 +115,4 @@ O(V^{2.5})
 $$
  이다.
 
-알고리즘을 이해하기 위해서는 2가지
-
+알고리즘을 이해하기 위해서는 2가지 개념을 이해해야 한다.
