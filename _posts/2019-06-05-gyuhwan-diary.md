@@ -4,6 +4,7 @@ title:  "0605 Diary"
 date:   2019-06-05 00:00:00 0000
 author : "Gyuhwan Kim"
 categories: diary
+use_math: true
 ---
 
 ### 공부
@@ -115,4 +116,6 @@ $$
 O(V^{2.5})
 $$
 이다.
+
+알고리즘을 이해하기 위해서는 2가지
 
