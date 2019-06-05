@@ -3,6 +3,9 @@ author: kimkyuhwan
 email: gmarble94@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
   Always Blue!
+
+baseurl: "/jekyll" # the subpath of your site, e.g. /blog
+url: "https://kimkyuhwan.github.io" # the base hostname & protocol for your site
 show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
@@ -10,7 +13,7 @@ show_excerpts: true # set to true to show excerpts on the homepage
 sass:
   sass_dir: _sass
 plainwhite:
-  name: Adam Denisov
+  name: Gyuhwan Kim
   tagline: Developer.
   date_format: "%b %-d, %Y"
 
