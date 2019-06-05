@@ -3,7 +3,7 @@ layout: post
 title:  "0605 Diary"
 date:   2019-06-05 00:00:00 0000
 author : "Gyuhwan Kim"
-categories: diary algorithm GoF
+categories: Diary Network-flow GoF Codeforce
 use_math: true
 ---
 
