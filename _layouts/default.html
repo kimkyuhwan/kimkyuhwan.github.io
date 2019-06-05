@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
 	{%- include head.html -%}
-	{ % if page.use_math % }
-    { % include mathjax_support % } 
-    { % endif % }
 </head>
 <body>
 	<main class="container">
@@ -32,5 +29,14 @@
 		gtag('config', '{{ site.plainwhite.analytics_id }}');
 	</script>
 	{%- endif -%}
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ [ '$', '$' ] ],
+            processEscapes: true
+        }
+    });
+    </script>
 </body>
 </html>
