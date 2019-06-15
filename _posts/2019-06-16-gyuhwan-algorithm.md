@@ -9,4 +9,17 @@ use_math: true
 
 ## Suffix Array Algorithm
 
-$ Fact1. lcp(Pos[y-1],Pos[y]) \req lcp(Pos[x],Pos[x']), x \leq y \leq x' $
+##### Fact 1.
+
+$ lcp(Pos[y-1],Pos[y]) \geq lcp(Pos[x],Pos[z]), x \leq y \leq z $
+
+##### Fact 2.
+
+$ if lcp(Pos[x-1], Pos[x]) > 1, then Rank[Pos[x-1]+1] < Rank[Posx]+1] $
+
+##### Fact 3
+
+$ if lcp[Pos[x-1], Pos[x]] > 1, then lcp(Pos[x-1]+1, Pos[x]+1)=lcp(Pos[x-1],Pos[x])-1 $
+
+
+
